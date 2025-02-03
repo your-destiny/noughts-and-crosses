@@ -1,0 +1,151 @@
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #242424;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+body {
+	margin: 0;
+	height: 100vh;
+	width: 100vw;
+	max-width: 100%;
+}
+
+#app {
+	height: inherit;
+	width: inherit;
+}
+
+.noughtsAndCrosses {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	row-gap: 50px;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+.noughtsAndCrossesInputDataWrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	max-width: calc(800px + 10px);
+	width: 100%;
+	column-gap: 30px;
+}
+
+.noughtsAndCrossesInputDataInputWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+	row-gap: 5px;
+	height: 50px;
+	width: 140px;
+}
+
+.noughtsAndCrossesInputDataSelectWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	row-gap: 5px;
+	height: 50px;
+}
+
+.noughtsAndCrossesInputDataInput {
+	width: 120px;
+	flex: 1 0;
+}
+
+.noughtsAndCrossesInputDataSelect {
+	width: 100%;
+	flex: 1 0;
+}
+
+.noughtsAndCrossesInputDataButton {
+  align-self: flex-end;
+  height: 25px;
+}
+
+.noughtsAndCrossesResult {
+  align-self: flex-end;
+}
+
+label {
+	font-size: 14px;
+}
+
+.noughtsAndCrossesField {
+	width: 800px;
+	height: 800px;
+	display: grid;
+	grid-gap: 5px;
+	box-shadow: 0 0 0 5px saddlebrown;
+}
+
+.noughtsAndCrossesFieldItem {
+	border: none;
+	background-color: transparent;
+	box-shadow: 0 0 0 5px saddlebrown;
+	box-sizing: border-box;
+	padding: 20px;
+	cursor: pointer;
+}
+
+.noughtsAndCrossesFieldItemCrosses {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.noughtsAndCrossesFieldItemCrosses::before,
+.noughtsAndCrossesFieldItemCrosses::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background-color: wheat;
+}
+
+.noughtsAndCrossesFieldItemCrosses::before {
+	transform: translateY(-50%) rotate(45deg);
+}
+
+.noughtsAndCrossesFieldItemCrosses::after {
+	transform: translateY(-50%) rotate(-45deg);
+}
+
+.noughtsAndCrossesFieldItemNoughts {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border-radius: 50%;
+	border: 5px solid wheat;
+}
+
+.noughtsAndCrossesFieldItemEmpty {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
