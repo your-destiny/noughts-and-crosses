@@ -1,5 +1,5 @@
 import { itemTypesLabelsReverse } from "./constants";
-import { GripTypes, ItemTypes } from "./enums";
+import { GripTypes, ItemTypes, ResultStatus } from "./enums";
 
 export type GripTypesObject = {
     [GripTypes.Rows]: number[];
@@ -16,8 +16,9 @@ export type Coordinate = {
     [GripTypes.Columns]: number;
 };
 
+
 export type Result = {
-    win: boolean;
+    status: ResultStatus;
     message: string;
 };
 

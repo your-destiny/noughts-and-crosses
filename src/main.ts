@@ -14,7 +14,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <div class="noughtsAndCrossesInputDataInputWrapper">
         <label>Размерность поля</label>
         <select required class="noughtsAndCrossesInputDataSelect" name="noughtsAndCrossesSelect" id="size">
-          <option value="3">3</option>
+          <option value="2">2</option>
+          <option selected="selected" value="3">3</option>
           <option value="4">4</option>
           <option value="5">4</option>
           <option value="6">6</option>

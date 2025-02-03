@@ -1,5 +1,9 @@
-import { classes, itemTypesLabelsReverse } from './constants';
-import { GripTypes, ItemTypes } from './enums';
+import {
+	classes,
+	itemTypesLabelsReverse,
+	resultStatusColor,
+} from './constants';
+import { GripTypes, ItemTypes, ResultStatus } from './enums';
 import NoughtsAndCrosses from './NoughtsAndCrosses';
 import { Coordinate, TypesLabelsReverse } from './types';
 
@@ -68,13 +72,20 @@ export const _run = (
 
 	const result = document.querySelector<HTMLSpanElement>('#result');
 
+	const setStatusColor = () =>
+		result!.setAttribute(
+			'style',
+			`color:${resultStatusColor[noughtsAndCrosses.result.status]}`,
+		);
+
 	result!.innerText = noughtsAndCrosses.result.message;
+	setStatusColor();
 
 	const elementsClick = (el: HTMLElement) => () => {
 		const currentClass = el.firstElementChild?.classList.value;
 
 		if (
-			noughtsAndCrosses.result.win ||
+			noughtsAndCrosses.result.status === ResultStatus.Win ||
 			!currentClass ||
 			currentClass === classes[ItemTypes.Crosses] ||
 			currentClass === classes[ItemTypes.Noughts]
@@ -98,9 +109,7 @@ export const _run = (
 
 		result!.innerText = noughtsAndCrosses.result.message;
 
-		if (noughtsAndCrosses.result.win) {
-			result!.setAttribute('style', 'color:green');
-		}
+		setStatusColor();
 	};
 
 	elements.forEach(el => {

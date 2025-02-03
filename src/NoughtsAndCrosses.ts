@@ -1,5 +1,5 @@
-import { defaultResult, labels } from './constants';
-import { ItemTypes, GripTypes } from './enums';
+import { defaultResult, labels, resultStatusMessages } from './constants';
+import { ItemTypes, GripTypes, ResultStatus } from './enums';
 import { Field, Result, Coordinate } from './types';
 
 class NoughtsAndCrosses {
@@ -52,17 +52,19 @@ class NoughtsAndCrosses {
 			this.checkedCurrentColumns ||
 			this.checkedDiagonal
 		) {
-			this._result.message = `Игра закончена! ${this.winLabel} победили!`;
-			this._result.win = true;
+			this._result.message = `${resultStatusMessages[ResultStatus.Win]} ${this.winLabel}!`;
+			this._result.status = ResultStatus.Win;
 			return;
 		}
 
 		if (this.checkedLast) {
-			this._result.message = `Игра закончена! Ничья!`;
+			this._result.status = ResultStatus.Draw;
+			this._result.message = resultStatusMessages[ResultStatus.Draw];
 			return;
 		}
 
-		this._result.message = 'Игра в процессе!';
+		this._result.status = ResultStatus.InProgress;
+		this._result.message = resultStatusMessages[ResultStatus.InProgress];
 	};
 
 	private get currentRows() {
@@ -72,7 +74,7 @@ class NoughtsAndCrosses {
 	private get currentColumns() {
 		return this._coordinates[this._type][GripTypes.Columns];
 	}
-
+	
 	private get checkedCurrentRows() {
 		return this.getCheckedCurrent(this.currentRows);
 	}
@@ -96,7 +98,10 @@ class NoughtsAndCrosses {
 	}
 
 	private get checkedLast() {
-		return this.currentRows.length === Math.pow(this._size, 2);
+		const crosses = this._coordinates[ItemTypes.Crosses][GripTypes.Rows];
+		const noughts = this._coordinates[ItemTypes.Noughts][GripTypes.Rows];
+
+		return [...crosses, ...noughts].length === Math.pow(this._size, 2);
 	}
 
 	private get winLabel() {
