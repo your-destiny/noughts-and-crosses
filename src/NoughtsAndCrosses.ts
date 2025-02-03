@@ -27,10 +27,6 @@ class NoughtsAndCrosses {
 		return this._type;
 	}
 
-	set type(type: ItemTypes) {
-		this._type = type;
-	}
-
 	set coordinates(coordinate: string) {
 		const coordinateJSON: Coordinate = JSON.parse(coordinate);
 
